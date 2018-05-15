@@ -1,0 +1,35 @@
+.World_container{
+    margin: auto;
+    width: 90vh;
+    height: 90%;
+}
+.row{
+    margin: 0 auto;
+    width: 90vh;
+    height: 8.11vh;
+    border: 1px solid black;
+    display: flex;
+    position: relative;
+}
+.column{
+    height: 100%;
+    width: 8.05vh;
+    border: 1px solid black;
+    overflow: hidden;
+    position: relative;
+    background: url('../media/grass.png')
+}
+.column *{
+    width: 1100%;
+    position: absolute;
+}
+.door_closed img{
+    width: 670%;
+    top: -20vh;
+    left: -12.5vh;
+}
+.forest1 img{
+    width: 850%;
+    left:-25vh;
+    top:-16.5vh;
+}
