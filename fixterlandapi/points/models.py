@@ -13,6 +13,8 @@ class Character(models.Model):
     fire= models.IntegerField()
     hp= models.IntegerField()
     mn=models.IntegerField()
+    skin=models.ImageField(upload_to='skin_img',blank=True,null=True)
+    details=models.TextField(default="lorem")
 
     def __str__(self):
         return self.name_character
@@ -51,28 +53,28 @@ class Stage(models.Model):
         return self.name
 
 class Profile(models.Model):
-    name= models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
-    email= models.EmailField()
+    name= models.OneToOneField(User, related_name='userprofile', on_delete=models.CASCADE, blank=True, null=True)
     title=models.CharField(max_length=200, blank=True, null=True)
     type_character= models.ForeignKey(Character, on_delete=models.CASCADE , blank=True, null=True)
-    hp= models.IntegerField()
-    mn= models.IntegerField()
-    mele= models.IntegerField()
-    magic=models.IntegerField()
-    lvl=models.IntegerField()
-    exp=models.FloatField()
-    skin=models.ImageField(upload_to='skin_img',blank=True,null=True)
+    hp_tot= models.IntegerField(default=25)
+    hp_act= models.IntegerField(default=25)
+    mn_tot= models.IntegerField(default=10)
+    mn_act= models.IntegerField(default=10)
+    mele= models.IntegerField(blank=True, null=True)
+    magic=models.IntegerField(blank=True, null=True)
+    lvl=models.IntegerField(blank=True, null=True,default=0)
+    exp=models.FloatField(blank=True, null=True,default=0)
     item=models.ManyToManyField(Item,blank=True,null=True)
     boss=models.ManyToManyField(Boss,blank=True, null=True)
 
     def __str__(self):
-        return self.title
+        return  ' {} the {}'.format(self.name, self.title)
 
     @receiver(post_save, sender=User)
     def create_user_profile(sender, instance, created, **kwargs):
         if created:
-            Profile.objects.create(user=instance)
+            Profile.objects.create(name=instance)
 
     @receiver(post_save, sender=User)
     def save_user_profile(sender, instance, **kwargs):
-	    instance.profile.save()
+	    instance.userprofile.save()

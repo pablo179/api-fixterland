@@ -9,14 +9,16 @@ from rest_framework.response import Response
 class UserViewSet(viewsets.ModelViewSet):
     queryset=User.objects.all()
     serializer_class=UserSerializer
-
 class MyUser(APIView):
-	
-	def get(self, request, format=None):
-		my_user = User.objects.all().get(id=request.user.id)
-		serializer = UserSerializer(my_user)
-		
-		return Response(serializer.data)
+    def get(self, request, format=None):
+        my_user = Profile.objects.all().get(id=request.user.userprofile.id)
+        serializer = ProfileSerializer(my_user)
+        return Response(serializer.data)
+    def put(self, request, format=None):
+        my_user = Profile.objects.all().get(id=request.user.userprofile.id)
+        serializer = ProfileSerializer(my_user)
+        return Response(serializer.data)
+        
 class CharacterViewSet(viewsets.ModelViewSet):
     queryset=Character.objects.all()
     serializer_class=CharacterSerializer

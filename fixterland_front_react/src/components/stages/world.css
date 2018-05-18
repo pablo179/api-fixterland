@@ -7,29 +7,103 @@
     margin: 0 auto;
     width: 90vh;
     height: 8.11vh;
-    border: 1px solid black;
     display: flex;
     position: relative;
 }
 .column{
     height: 100%;
     width: 8.05vh;
-    border: 1px solid black;
     overflow: hidden;
     position: relative;
-    background: url('../media/grass.png')
+    background: url('../media/grass.png');
 }
 .column *{
     width: 1100%;
     position: absolute;
 }
-.door_closed img{
-    width: 670%;
-    top: -20vh;
-    left: -12.5vh;
+.door_closed img.escen{
+    width: 665%;
+    top: -21vh;
+    left: -12.9vh;
 }
-.forest1 img{
-    width: 850%;
-    left:-25vh;
-    top:-16.5vh;
+.forest1 img.escen{
+    width: 865%;
+    left:-35vh;
+    top:-10vh;
+}
+.forest2 img.escen{
+    width: 865%;
+    left:-43.5vh;
+    top:-22vh;
+}
+.bush img.escen{
+    width: 865%;
+    left:-48.5vh;
+    top:-32.5vh;
+}
+.house1 img.escen{
+    width: 865%;
+    left:-37vh;
+    top:0;
+}
+.house2 img.escen{
+    width: 865%;
+    left:-44vh;
+    top:0;
+}
+.house3 img.escen{
+    width: 865%;
+    left:-37vh;
+    top:-8.5vh;
+}
+.house4 img.escen{
+    width: 865%;
+    left:-44vh;
+    top:-8.5vh;
+}
+.house5 img.escen{
+    width: 865%;
+    left:-37vh;
+    top:-17vh;
+}
+.house6 img.escen{
+    width: 865%;
+    left:-44vh;
+    top:-17vh;
+}
+.house7 img.escen{
+    width: 865%;
+    left:-37vh;
+    top:-25.5vh;
+}
+.house8 img.escen{
+    width: 865%;
+    left:-44vh;
+    top:-25.5vh;
+}
+.way1 img.escen{
+    width: 900%;
+    left:-18.5vh;
+    top:-54vh;
+}
+.way2 img.escen{
+    width: 899%;
+    left:-1vh;
+    top:-18vh;
+    transform: rotate(90deg);
+}
+.way3 img.escen{
+    width: 900%;
+    left:-18.5vh;
+    top:-44vh;
+}
+.way4 img.escen{
+    width: 900%;
+    left:-9.5vh;
+    top:-63vh;
+}
+.way5 img.escen{
+    width: 900%;
+    left:-19vh;
+    top:-63vh;
 }
