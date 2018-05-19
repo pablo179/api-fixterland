@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
 import Routes from './Routes';
+import {Dialog,FlatButton} from 'material-ui'
 
 class App extends Component {
 
   state={
     logged: false,
-    user:{}
+    user:{},
+    open:false,
   }
 
   componentWillMount(){
@@ -33,7 +35,10 @@ logIn=(user)=>{
     console.log(data)
     localStorage.setItem('userToken',JSON.stringify(data.token));
     this.setState({logged:true})
-  }).catch(e=>{console.log(e)})
+  }).catch(e=>{
+    console.log(e)
+    this.handleOpen();
+  })
 }
 
   logOut=()=>{
@@ -51,13 +56,33 @@ logIn=(user)=>{
     }
   }
 
+  handleOpen = () => {
+    this.setState({open: true});
+  };
+  handleClose = () => {
+    this.setState({open: false});
+  };
   render() {
     let {logged}=this.state;
     return (
       <div className="App">
 
         <audio src={require('./components/media/themefix.mp3')} autoPlay loop></audio>
-            
+          
+        <Dialog
+          title="Error"
+          actions={[
+            <FlatButton
+              label="Aceptar"
+              primary={true}
+              onClick={this.handleClose}
+            />
+          ]}
+          modal={true}
+          open={this.state.open}
+        >
+          Usuario o contrraseña incorrectos
+        </Dialog>
         <Routes
             logIn={this.logIn}
             logged={logged}

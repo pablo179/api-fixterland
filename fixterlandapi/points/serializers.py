@@ -27,6 +27,11 @@ class StageSerializer(serializers.ModelSerializer):
         model=Stage
         fields='__all__'
 
+class MonstersSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model=Monsters
+        fields='__all__'
 
 class UserSerializer(serializers.ModelSerializer):
 	password = serializers.CharField(write_only=True)

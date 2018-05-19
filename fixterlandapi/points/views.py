@@ -23,6 +23,10 @@ class CharacterViewSet(viewsets.ModelViewSet):
     queryset=Character.objects.all()
     serializer_class=CharacterSerializer
 
+class MonstersViewSet(viewsets.ModelViewSet):
+   queryset=Monsters.objects.all()
+   serializer_class=MonstersSerializer
+
 class ItemViewSet(viewsets.ModelViewSet):
     queryset=Item.objects.all()
     serializer_class=ItemSerializer

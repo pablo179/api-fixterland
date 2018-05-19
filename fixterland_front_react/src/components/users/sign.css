@@ -1,14 +1,16 @@
-.creating_profile{
+.Signin_container{
     width: 100%;
     height: 100vh;
-    background: url('');
+    background: url('https://i.neoseeker.com/ca/prince_of_persia_heir_apparent_conceptart_3bnzq.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
     padding: 0 0 0 15%;
 }
 .creating_profile>*{
     width: 80%;
     height: auto;
-    padding: 5% 15%;
-    margin: 5%;
+    padding: 5% 10%;
+    margin: 2%;
     border-radius: 50px;
     border: 3px solid rgb(77, 68, 29) ;
     background-color: rgba(240, 224, 157, 0.808);
@@ -20,4 +22,13 @@
     border-radius: 10px;
     background: rgba(240, 224, 157, 0.808) ;
     border: 2px solid rgb(77, 68, 29) ;
+}
+.log-form{
+    width: 80%;
+    height: auto;
+    padding: 5% 10%;
+    margin: 2%;
+    border-radius: 50px;
+    border: 3px solid rgb(77, 68, 29) ;
+    background-color: rgba(240, 224, 157, 0.808);
 }

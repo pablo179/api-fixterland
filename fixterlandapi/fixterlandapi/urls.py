@@ -15,6 +15,7 @@ router.register('items',ItemViewSet)
 router.register('bosses',BossViewSet)
 router.register('stages',StageViewSet)
 router.register('profiles', ProfileViewSet)
+router.register('monsters',MonstersViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

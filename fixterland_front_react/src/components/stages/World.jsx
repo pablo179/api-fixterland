@@ -1,7 +1,7 @@
 import React from 'react';
 import {Midgard} from './Midgard';
-export const World =({position,profile,muñequito})=>(
+export const World =({pos})=>(
     <div>
-    <Midgard {...position} {...profile} {...muñequito} />
+    <Midgard pos={pos}  />
     </div>
 )

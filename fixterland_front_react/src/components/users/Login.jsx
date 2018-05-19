@@ -7,9 +7,9 @@ export const Login=({email, password, logIn, handleText, user})=>(
             <TextField
             onChange={handleText}
             name={'username'}
-            hintText="usuario@company.com"
+            hintText="Username"
             floatingLabelFixed={true}
-            floatingLabelText="Email"
+            floatingLabelText="Username"
             fullWidth={true}
             />
             <br/>

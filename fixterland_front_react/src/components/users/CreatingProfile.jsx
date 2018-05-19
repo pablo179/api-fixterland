@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import {Link} from 'react-router-dom';
-import { CardText,GridList, GridTile ,TextField,Card, CardMedia} from 'material-ui';
+import { CardText,GridList, GridTile ,Card, CardMedia} from 'material-ui';
 class CreatingProfile extends Component{
     state ={
         profile:{
@@ -25,7 +25,28 @@ class CreatingProfile extends Component{
     }
     componentWillMount(){
         this.getCharacters()
-        this.probando()
+        this.getProfile()
+    }
+
+    getProfile=()=>{
+        const userToken = JSON.parse(localStorage.getItem('userToken'));
+                              let url ='http://localhost:8000/my_user/';
+                              var request = new Request(url,{
+                                method: 'GET',
+                              //  body: JSON.stringify(newUser),
+                                headers: new Headers({
+                                  'Authorization':'Token '+userToken,
+                                  'Content-Type': 'application/json'
+                                })
+                              });
+                              fetch(request)
+                                  .then(r=>r.json())
+                                  .then(data=>{
+                                      this.setState({profile:data})
+                                  })
+                                  .catch(e=>{
+                                      console.log(e)
+                              })
     }
 
     handleText=(e)=>{
@@ -37,8 +58,6 @@ class CreatingProfile extends Component{
         //this.state.profile.type_character_id=parseInt(e.target.value);
         let profile = {}
         profile['type_character_id'] = e.target.value;
-        profile['title']=this.state.title;
-        console.log(this.state.profile);
 
 
         let url = 'http://localhost:8000/profiles/'+this.state.profile.id+"/";
@@ -50,8 +69,7 @@ class CreatingProfile extends Component{
             }
         });
         fetch(request)
-            .then(r=>{r.json()
-            console.log(r)})
+            .then(r=>{r.json()})
             .catch(e=>{
                 console.log(e)
         })
@@ -70,7 +88,6 @@ class CreatingProfile extends Component{
         fetch(request)
             .then(r=>r.json())
             .then(data=>{
-                console.log(data)
                 this.setState({characters:data})
             })
             .catch(e=>{
@@ -82,75 +99,37 @@ class CreatingProfile extends Component{
         let url = 'http://localhost:8000/characters/';
         var request = new Request(url, {
             method: 'GET',
-            //body: data,
             headers: new Headers({
-                //'Authorization':'Token '+userToken,
                 'Content-Type': 'application/json'
             })
         });
         fetch(request)
             .then(r=>r.json())
             .then(data=>{
-                console.log(data)
                 this.setState({characters:data})
             })
             .catch(e=>{
                 console.log(e)
         })
     }
-    probando=()=>{
-        const userToken = JSON.parse(localStorage.getItem('userToken'));
-        let url ='http://localhost:8000/my_user/';
-        var request = new Request(url,{
-          method: 'GET',
-        //  body: JSON.stringify(newUser),
-          headers: new Headers({
-            'Authorization':'Token '+userToken,
-            'Content-Type': 'application/json'
-          })
-        });
-        fetch(request)
-            .then(r=>r.json())
-            .then(data=>{
-                console.log(data)
-                this.setState({profile:data})
-                console.log(this.state.profile)
-            })
-            .catch(e=>{
-                console.log(e)
-        })
-      }
     render(){
         let {characters}=this.state
         return(
             <div className="creating_profile">
-            <div className="select_title">
-            <h4>Ingresa tu apodo o titulo</h4>
-            <TextField
-            style={{border:'2px solid grey'}}
-            onChange={this.handleText}
-                hintText="nickname"
-                floatingLabelFixed={true}
-                floatingLabelText="nickname"
-                fullWidth={false}
-                type={'text'}
-                name={'title'}
-            /><br />
-        </div>
             <div className="select_character">
                 <h3>Selecciona tu personaje:</h3>
-                <GridList cols={1} cellHeight={"auto"}>
+                <GridList cols={2} cellHeight={"auto"}>
                 {characters.map((p,key)=>(
                     <GridTile cols={1} key={key} style={{padding:'2%'}}>
                         <Card style={{padding:5}}>
                             <CardMedia>
-                                <img src={p.skin}/>
+                                <img src={p.skin} alt=""/>
                             </CardMedia>
 
                             <CardText>
                            {p.details}
                            </CardText>
-                           <Link to="/screen">
+                           <Link to="/">
                             <button 
                              value={p.id}  
                              onClick={this.Created}>

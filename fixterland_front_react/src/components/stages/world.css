@@ -3,6 +3,24 @@
     width: 90vh;
     height: 90%;
 }
+.battle_container{
+    position: absolute;
+    top:0;
+    left:34%;
+    width: 90vh;
+    height: 90%;
+    background: black;
+}
+.battle_container .overlay{
+    position: absolute;
+    top: 20%;
+    width: 100%;
+    height: 60%;
+    background: url('https://vignette.wikia.nocookie.net/finalfantasy/images/0/09/Battleback_veldt_a.png/revision/latest?cb=20141030004743');
+    background-size: cover;
+    z-index: 0;
+    
+}
 .row{
     margin: 0 auto;
     width: 90vh;
@@ -106,4 +124,27 @@
     width: 900%;
     left:-19vh;
     top:-63vh;
+}
+.player1_battle{
+    width: 18vh;
+    height: 18vh;
+    overflow: hidden;
+    margin: 25% 0 0 10%;
+}
+.player1_img{
+    width: 1150%;
+    -moz-transform: scaleX(-1);
+-o-transform: scaleX(-1);
+-webkit-transform: scaleX(-1);
+transform: scaleX(-1);
+-ms-filter: "FlipH";
+filter: FlipH;
+}
+.actions{
+    width: 100%;
+    border: 3px solid rgb(77, 68, 29) ;
+    background-color: rgba(240, 224, 157, 0.808);
+    border-radius: 10px;
+    padding: 20px; 
+    height: 40%;
 }

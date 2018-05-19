@@ -46,8 +46,9 @@ export const SigninComponent =({email, username, password, password2, handleNewU
             fullWidth={true} 
             primary={true}/>
     </form>
-    <span>Already Registered=?...</span>
-    <Link to="/signin">
+    <br/>
+    <span>Ya estas registrado?</span>
+    <Link to="/">
         <FlatButton label="Log In" fullWidth={true} />
     </Link>
     </div>

@@ -3,6 +3,13 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
+class Monsters(models.Model):
+    name=models.TextField()
+    skin=models.ImageField(upload_to='skin_img',blank=True,null=True)
+        
+    def __str__(self):
+        return self.name
+    
 class Character(models.Model):
     name_character= models.CharField(max_length=100)
     mele= models.IntegerField()
@@ -28,6 +35,7 @@ class Item(models.Model):
     wind= models.IntegerField()
     wather= models.IntegerField()
     fire= models.IntegerField()
+    skin= models.ImageField(upload_to='item_img',blank=True,null=True)
 
     def __str__(self):
         return self.name
@@ -42,6 +50,7 @@ class Boss(models.Model):
     wind= models.IntegerField()
     wather= models.IntegerField()
     fire= models.IntegerField()
+    skin=models.ImageField(upload_to='skin_img',blank=True,null=True)
 
     def __str__(self):
         return self.name
@@ -54,21 +63,21 @@ class Stage(models.Model):
 
 class Profile(models.Model):
     name= models.OneToOneField(User, related_name='userprofile', on_delete=models.CASCADE, blank=True, null=True)
-    title=models.CharField(max_length=200, blank=True, null=True)
     type_character= models.ForeignKey(Character, on_delete=models.CASCADE , blank=True, null=True)
-    hp_tot= models.IntegerField(default=25)
-    hp_act= models.IntegerField(default=25)
-    mn_tot= models.IntegerField(default=10)
-    mn_act= models.IntegerField(default=10)
-    mele= models.IntegerField(blank=True, null=True)
-    magic=models.IntegerField(blank=True, null=True)
-    lvl=models.IntegerField(blank=True, null=True,default=0)
-    exp=models.FloatField(blank=True, null=True,default=0)
+    hp_tot= models.IntegerField(default=50)
+    hp_act= models.IntegerField(default=50)
+    mn_tot= models.IntegerField(default=25)
+    mn_act= models.IntegerField(default=25)
+    mele= models.IntegerField(default=5)
+    magic=models.IntegerField(default=5)
+    lvl=models.IntegerField(default=0)
+    exp=models.FloatField(default=0)
     item=models.ManyToManyField(Item,blank=True,null=True)
     boss=models.ManyToManyField(Boss,blank=True, null=True)
+    first_time=models.BooleanField(default=True)
 
     def __str__(self):
-        return  ' {} the {}'.format(self.name, self.title)
+        return  '{}'.format(self.name)
 
     @receiver(post_save, sender=User)
     def create_user_profile(sender, instance, created, **kwargs):
