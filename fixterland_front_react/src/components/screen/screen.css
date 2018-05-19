@@ -42,3 +42,16 @@
     top:-4vh;
     left: -7vh;
 }
+.back_home{
+    margin: 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 3px solid rgb(77, 68, 29) ;
+    background-color: rgba(240, 224, 157, 0.808);
+    align-items: center;
+    text-align: center;
+    position: fixed;
+    top:0;
+    right: 0;
+}
