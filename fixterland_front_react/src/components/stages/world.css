@@ -130,6 +130,7 @@
     height: 18vh;
     overflow: hidden;
     margin: 25% 0 0 10%;
+    position: relative;
 }
 .player1_img{
     width: 1150%;
@@ -175,10 +176,39 @@ transform: scaleX(-1);
 .state_enemy span{
     display: flex;
 }
-.Erebus{
+.Erebusnormal{
     position: absolute;
     width: 800%;
     left:-3vh;
+}
+.Erebusbasico{
+    position: absolute;
+    width: 780%;
+    animation: erebas 2s steps(1,end)  infinite reverse;
+     left:-120vh;
+    top:-40vh;
+}
+@keyframes erebas{
+    20%{
+        left:-98vh;
+        top:-40vh;
+    }
+    40%{
+        left:-80vh;
+        top:-40vh;
+    }
+    60%{
+        left:-54vh;
+        top:-36vh;
+    }
+    80%{
+        left:-27vh;
+        top:-30vh;
+    }
+    100%{
+        left:-2vh;
+        top:-57vh;
+    }
 }
 .Erebussta{
     position: absolute;
@@ -203,4 +233,214 @@ transform: scaleX(-1);
 .but_act:hover{
     border: 3px solid rgb(77, 68, 29) ;
     background-color: rgba(240, 224, 157, 0.808);
+}
+.basic{
+   position: absolute;
+   left:-37vh;
+   animation: atbasic 1s infinite steps(1,end);
+}
+@keyframes atbasic{
+    20%{
+        left:-18vh;
+        background: url("http://i59.tinypic.com/amgrc.jpg");
+        background-position-x:55%;
+        background-size: 70%;
+    }
+    40%{
+        left:-37vh;
+        background: url("http://i59.tinypic.com/amgrc.jpg");
+        background-position-x:15%;
+        background-size: 70%;
+    }
+    60%{
+        left:-57vh;
+        background: url("http://i59.tinypic.com/amgrc.jpg");
+        
+        background-position-x:63%;
+        background-size: 70%;
+    }
+    80%{
+        left:-75vh;
+
+    }
+    100%{
+        left:-92vh;
+    }
+}
+.kame{
+    position: absolute;
+    top:50%;
+    left: 24%;
+    transform: rotate(-8deg);
+    width: 45%;
+    height: 40px;
+}
+.player1_img.kame{
+    position: relative;
+    top:0;
+    left: 0;
+    transform: rotate(0);
+    background: unset;
+    width: 1150%;
+    height: auto;
+    -moz-transform: scaleX(-1);
+-o-transform: scaleX(-1);
+-webkit-transform: scaleX(-1);
+transform: scaleX(-1);
+-ms-filter: "FlipH";
+filter: FlipH;
+}
+.power{
+    background: url('https://orig00.deviantart.net/03a9/f/2011/221/4/c/dbz_aura__s_1_by_shadow228-d45yxo5.png');
+    background-size: 55%;
+    background-position-x: 75vh;
+    background-position-y: -5vh;
+    animation: saiyan 2s steps(1,end) infinite;
+}
+@keyframes saiyan{
+    20%{
+        background: url('https://orig00.deviantart.net/03a9/f/2011/221/4/c/dbz_aura__s_1_by_shadow228-d45yxo5.png');
+        background-size: 55%;
+        background-position-x: 75vh;
+        background-position-y: -5vh;
+    }
+    40%{
+        background-position-x: 59vh;
+    }
+    60%{
+        background-position-x: 40vh;
+    }
+    80%{
+        background-position-x: 20vh;
+    }
+    100%{
+        background-position-x: -1vh;
+    }
+}
+.heal{
+    background: url('https://i.pinimg.com/originals/26/52/68/265268d5dac46f9b7b807a2a8b58bcd1.png');
+    background-size: 50%;
+    background-position-x: 120vh;
+    background-position-y: -22vh;
+    animation: heleando 1s steps(1,end) infinite;
+}
+@keyframes heleando{
+    20%{
+        background: url('https://i.pinimg.com/originals/26/52/68/265268d5dac46f9b7b807a2a8b58bcd1.png');
+        background-size: 50%;
+        background-position-x: 2vh;
+        background-position-y: -22vh;
+    }
+    40%{
+        background-position-x: 22vh;
+        background-position-y: -22vh;
+    }
+    60%{
+        background-position-x: 43vh;
+        background-position-y: -22vh;
+    }
+    80%{
+
+        background-position-x: 82.5vh;
+        background-position-y: -22vh;
+    }
+    100%{
+        background-position-x: 120vh;
+        background-position-y: -22vh;
+    }
+}
+.plannormal{
+    background: unset;
+}
+.plankame{
+    width: 50px;
+    height: 100%;
+    background: url("https://orig00.deviantart.net/ba82/f/2015/109/b/9/fx_energy_attacks_by_mete122-d8qa3ha.png");
+    animation: power 2s steps(1,end) infinite;
+}
+@keyframes power{
+    7%{
+        background-size: 1200%;
+        margin: 0 0 0 1vh;
+        background: url("https://orig00.deviantart.net/ba82/f/2015/109/b/9/fx_energy_attacks_by_mete122-d8qa3ha.png");
+        background-position-x: 8vh; 
+        background-position-y: -1vh;
+    }
+    14%{
+        margin: 0 0 0 2vh;
+        background-position-x: 8vh; 
+        background-position-y: -1vh;
+    }
+    21%{
+        margin: 0 0 0 4vh;
+        background-position-x: 8vh; 
+        background-position-y: -1vh;
+    }
+    28%{
+        margin: 0 0 0 6vh;
+        background-position-x: -13vh; 
+        background-position-y: -1.9vh;
+    }
+    35%{
+        margin: 0 0 0 8vh;
+        background-position-x: -13vh; 
+        background-position-y: -1.9vh;
+    }
+    42%{
+        margin: 0 0 0 10vh;
+        background-position-x: -13vh; 
+        background-position-y: -1.9vh;
+    }
+    49%{    
+        background-size: 1150%;
+        margin: 0 0 0 12vh;
+        background-position-x: -22vh; 
+        background-position-y: -1.5vh;
+    }
+    56%{ 
+        margin: 0 0 0 14vh;
+        background-position-x: -22vh; 
+        background-position-y: -1.5vh;
+    }
+    63%{ 
+        margin: 0 0 0 16vh;
+        background-position-x: -22vh; 
+        background-position-y: -1.5vh;
+    }
+    70%{
+        background-size: 1050%;
+        margin: 0 0 0 18vh;
+        background-position-x: -29vh; 
+        background-position-y: -1.5vh;
+    }
+    77%{
+        background-size: 1050%;
+        margin: 0 0 0 20vh;
+        background-position-x: -29vh; 
+        background-position-y: -1.5vh;
+    }
+    84%{
+        background-size: 1050%;
+        margin: 0 0 0 22vh;
+        background-position-x: -29vh; 
+        background-position-y: -1.5vh;
+    }
+    91%{
+        background-size: 1050%;
+        margin: 0 0 0 24vh;
+        background-position-x: -39vh; 
+        background-position-y: -1.5vh;
+    }
+    98%{
+        background-size: 1050%;
+        margin: 0 0 0 26vh;
+        background-position-x: -39vh; 
+        background-position-y: -1.5vh;
+    }
+    100%{
+        background-size: 1050%;
+        margin: 0 0 0 28vh;
+        background-position-x: -39vh; 
+        background-position-y: -1.5vh;
+    }
 }

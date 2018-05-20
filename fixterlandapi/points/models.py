@@ -6,7 +6,8 @@ from django.dispatch import receiver
 class Monsters(models.Model):
     name=models.TextField()
     skin=models.ImageField(upload_to='skin_img',blank=True,null=True)
-        
+    hp_act=models.IntegerField(default=15)
+    hp_tot=models.IntegerField(default=15)
     def __str__(self):
         return self.name
     

@@ -4,6 +4,7 @@ import HomePage from './components/home/HomePage';
 import ScreenPage from './components/screen/ScreenPage';
 import SigninPage from './components/users/SigninPage';
 import CreatingProfile from './components/users/CreatingProfile';
+import { Profile } from './components/home/Profile';
 class Routes extends React.Component{
 
     render(){
@@ -14,6 +15,7 @@ class Routes extends React.Component{
                 <Route exact path="/signin" component={SigninPage}/>
                 <Route exact path="/screen" component={ScreenPage}/>
                 <Route exact path="/creatingprofile" component={CreatingProfile}/>
+                <Route exact path="/profile" component={Profile}/>
             </Switch>
         )
     }

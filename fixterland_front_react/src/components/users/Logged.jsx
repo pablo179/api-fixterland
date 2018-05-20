@@ -5,7 +5,6 @@ export const Logged=(logOut)=>(
 
     <div className="Home_options">
     <Link to="/screen">Nuevo Juego</Link>
-    <Link to="/screen">Continuar</Link>
     <Link to="/profile">Perfil</Link>
     <Link to="/screen">Comunidad</Link>
     <form action="" onSubmit={logOut.logOut}>

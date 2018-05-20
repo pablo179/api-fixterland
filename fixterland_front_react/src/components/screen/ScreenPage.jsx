@@ -8,10 +8,12 @@ import IconButton from 'material-ui/IconButton';
 import ActionHome from 'material-ui/svg-icons/action/home';
 class ScreenPage extends Component{
     state={
+        aviso:'',
+        enemyaction:'normal',
+        action:'normal',
         enemydamage:"",
         playerdamage:"",
         who:0,
-        action:"",
         anchorEl:null,
         open:false,
         open1:false,
@@ -51,7 +53,7 @@ class ScreenPage extends Component{
         },
         pos:[
             [1,1,1,1,1,1,1,1,1,1,1],
-            [1,1,1,1,0,5,0,0,0,2,0],
+            [1,1,1,1,0,3,0,0,0,2,0],
             [1,1,0,0,0,0,0,0,3,1,1],
             [1,1,0,1,1,0,0,0,0,1,1],
             [1,1,0,1,1,0,0,3,0,1,1],
@@ -231,7 +233,6 @@ getItems=()=>{
     }
 
     movedown=()=>{
-        console.log('asd');
         let{x,y}=this.state.position;
         if(this.state.pos[x+1][y]===0 || this.state.pos[x+1][y]===2 || this.state.pos[x+1][y]===3 || this.state.pos[x+1][y]===4){
             this.setState(pos=>(this.state.pos[x][y]=0));
@@ -244,9 +245,14 @@ getItems=()=>{
     checkbattle=(x,y)=>{
         if(this.state.pos[x+1][y].key==3 || this.state.pos[x-1][y].key==3 || this.state.pos[x][y+1].key==3 || this.state.pos[x][y-1].key==3 ){
             this.setState({pos_battle_monster:true})
+            this.setState({aviso:'presione "i" para iniciar la batalla'})
+            setTimeout(function(){
+            this.setState({aviso:''})
+            }.bind(this),2000)
         }
         else{
             this.setState({pos_battle_monster:false})
+            this.setState({aviso:''})
         }
     }   
     setbattle_monster=()=>{
@@ -257,36 +263,66 @@ getItems=()=>{
     
     figthing1=(e)=>{
         let nuevaVida=this.state.monsters[this.state.who].hp_act-e.target.value
-        this.setState(monsters=>this.state.monsters[this.state.who].hp_act=nuevaVida);
-        if(this.state.monsters[this.state.who].hp_act<=0){
-            this.setState(pos=>(this.state.pos[this.state.position.x+1][this.state.position.y]=0))
-            this.setState(pos=>(this.state.pos[this.state.position.x-1][this.state.position.y]=0))
-            this.setState(pos=>(this.state.pos[this.state.position.x][this.state.position.y+1]=0))
-            this.setState(pos=>(this.state.pos[this.state.position.x][this.state.position.y-1]=0))
-            this.setState({battle:false})
-            this.setState(profile=>this.state.profile.exp=this.state.profile.exp+50);
-            if(this.state.profile.exp>=100){
-                this.setState(profile=>this.state.profile.lvl=this.state.profile.lvl+1);
-                this.setState(profile=>this.state.profile.exp=0);
-            }
-        }else{
-            this.setState(profile=>this.state.profile.hp_act-=Math.floor(Math.random() * 10));
+        this.setState({action:e.target.name});
+        this.setState({enemydamage:-e.target.value})
+        if(e.target.name==='kame'){
+            this.setState(profile=>(this.state.profile.mn_act-=10))
         }
+        if(e.target.name==='power'){
+            this.setState(profile=>(this.state.profile.mele+=Math.floor(Math.random()*3)));
+        }
+        if(e.target.name==="heal"){
+            this.setState(profile=>(this.state.profile.hp_act+=Math.floor(Math.random()*3)));
+        }
+        setTimeout(function() {
+            this.setState({enemydamage:""}) 
+            this.setState({action:'normal'});
+            this.setState(monsters=>this.state.monsters[this.state.who].hp_act=nuevaVida);
+            if(this.state.monsters[this.state.who].hp_act<=0){
+                this.setState(pos=>(this.state.pos[this.state.position.x+1][this.state.position.y]=0))
+                this.setState(pos=>(this.state.pos[this.state.position.x-1][this.state.position.y]=0))
+                this.setState(pos=>(this.state.pos[this.state.position.x][this.state.position.y+1]=0))
+                this.setState(pos=>(this.state.pos[this.state.position.x][this.state.position.y-1]=0))
+                this.setState({battle:false})
+                this.setState(profile=>this.state.profile.exp=this.state.profile.exp+Math.floor(Math.random() * 50)+30);
+                if(this.state.profile.exp>=100){
+                    this.setState(profile=>this.state.profile.lvl=this.state.profile.lvl+1);
+                    this.setState(profile=>this.state.profile.exp=0);
+                }
+            }else{
+                this.setState({enemyaction:'basico'})
+                setTimeout(function(){
+                    this.setState({enemyaction:'normal'})
+                    let damage=Math.floor(Math.random() * 10);
+                    this.setState({playerdamage:-damage})
+                    this.setState(profile=>this.state.profile.hp_act-=damage);
+                    setTimeout(function(){
+                        this.setState({playerdamage:""})
+                    }.bind(this),1000)
+                }.bind(this),2000);
+                if(this.state.profile.hp_act<=0){
+                    this.props.history.push('/')
+                 }
+            }
+        }.bind(this), 2000);
     }
 
 
 
     render(){
-        let {pos,open,anchorEl,action,open1,open2,monsters,who}=this.state
+        let {aviso,playerdamage,enemydamage,enemyaction,pos,open,anchorEl,action,open1,open2,monsters,who}=this.state
         let profile=this.state.profile
         return(
             <div className='Screen_Container' >
+           {aviso=="" ? true : <div className="aviso">
+                {this.state.aviso}
+            </div>} 
                 <div className="back_home">
-                <Link to="/">
-    <IconButton>
-      <ActionHome />
-    </IconButton>
- </Link>
+                    <Link to="/">
+                        <IconButton>
+                        <ActionHome />
+                        </IconButton>
+                    </Link>
                 </div>
             <StatesComponent {...profile} />
         <KeyHandler keyEventName={KEYPRESS} keyValue="a" onKeyHandle={this.moverigth} />
@@ -297,6 +333,9 @@ getItems=()=>{
         <World   pos={pos} />
                 {this.state.battle ? 
                 <Battle 
+                enemydamage={enemydamage}
+                playerdamage={playerdamage}
+                enemyaction={enemyaction}
                 figthing1={this.figthing1}
                 who={who}
                 monsters={monsters}

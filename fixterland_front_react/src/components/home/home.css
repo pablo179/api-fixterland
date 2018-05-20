@@ -83,7 +83,11 @@
     transform:scale(.9);
     box-shadow: 0px 0px 9px 10px #202020b7;
 }
-
+.profile_container{
+    background-color: rgba(240, 224, 157, 0.808);
+    width: 100%;
+    height: 100vh;
+}
 .Home_options{
     padding: 5px 2%;
     border-radius: 30px;
@@ -166,4 +170,16 @@
         background-position-x:-50px;
         background-position-y: -50px;
     }
+}
+.img_container{
+    width: 23vh;
+    height: 23vh;
+    overflow: hidden;
+    padding: 5px 2%;
+    border-radius: 30px;
+    border: 3px solid rgb(77, 68, 29) ;
+    background-color: rgba(240, 224, 157, 0.808);
+}
+.img_container img{
+    margin: -2vh;
 }
